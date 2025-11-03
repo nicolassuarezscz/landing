@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+´sd<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
 
         #visor {
             height: 80vh;
-            background: white;
+            background: #e8e8e8;
             padding: 2rem;
             overflow-y: auto;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -34,6 +34,9 @@
         #contenido {
             max-width: 900px;
             width: 100%;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
         }
 
         #contenido h1 {
@@ -140,29 +143,29 @@
     </div>
 
     <div id="panel-botones">
-        <button class="boton" onclick="app.mostrarContenido(1, event)">Opción 1</button>
-        <button class="boton" onclick="app.mostrarContenido(2, event)">Opción 2</button>
+        <button class="boton" onclick="app.mostrarContenido(1, event)">Opci&oacute;n 1</button>
+        <button class="boton" onclick="app.mostrarContenido(2, event)">Opci&oacute;n 2</button>
         <button class="boton" onclick="app.mostrarContenido(3, event)">TikTok</button>
-        <button class="boton" onclick="app.mostrarContenido(4, event)">Opción 4</button>
+        <button class="boton" onclick="app.mostrarContenido(4, event)">Opci&oacute;n 4</button>
     </div>
 
     <script>
         const app = {
             contenidos: {
                 1: {
-                    titulo: "Primera Sección",
-                    texto: "Este es el contenido de la primera opción. Aquí puedes colocar cualquier información que necesites mostrar: texto, imágenes, tablas, formularios, etc."
+                    titulo: "Primera Secci&oacute;n",
+                    texto: "Este es el contenido de la primera opci&oacute;n. Aqu&iacute; puedes colocar cualquier informaci&oacute;n que necesites mostrar: texto, im&aacute;genes, tablas, formularios, etc."
                 },
                 2: {
-                    titulo: "Segunda Sección",
-                    texto: "Contenido de la segunda opción. Este visor ocupa el 80% de la pantalla y se adapta automáticamente a diferentes dispositivos."
+                    titulo: "Segunda Secci&oacute;n",
+                    texto: "Contenido de la segunda opci&oacute;n. Este visor ocupa el 80% de la pantalla y se adapta autom&aacute;ticamente a diferentes dispositivos."
                 },
                 3: {
                     tipo: "tiktok-menu"
                 },
                 4: {
-                    titulo: "Cuarta Sección",
-                    texto: "Última opción disponible. El diseño es completamente responsive y funciona en computadoras, tablets y móviles."
+                    titulo: "Cuarta Secci&oacute;n",
+                    texto: "&Uacute;ltima opci&oacute;n disponible. El dise&ntilde;o es completamente responsive y funciona en computadoras, tablets y m&oacute;viles."
                 }
             },
 
@@ -216,22 +219,22 @@
                 const div = document.getElementById('contenido');
                 div.innerHTML = `
                     <h1 style="color: #667eea; margin-bottom: 2rem; text-align: center;">TikTok</h1>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 600px; margin: 0 auto;">
-                        <div onclick="app.mostrarTikTokPlayer('recomendados')" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 3rem; border-radius: 15px; cursor: pointer; text-align: center; color: white; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            <div style="font-size: 3rem; margin-bottom: 1rem;">🎥</div>
-                            <h3 style="font-size: 1.3rem;">Videos Recomendables</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 0.5rem; width: 100%; height: calc(100% - 5rem); max-width: 800px; max-height: 600px; margin: 0 auto;">
+                        <div onclick="app.mostrarTikTokPlayer('recomendados')" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; cursor: pointer; text-align: center; color: white; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1/1;" onmouseover="this.style.transform='scale(0.95)'" onmouseout="this.style.transform='scale(1)'">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">&#127909;</div>
+                            <h3 style="font-size: 1.3rem; padding: 0 1rem;">Videos Recomendables</h3>
                         </div>
-                        <div onclick="app.mostrarTikTokPlayer('vistos')" style="background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); padding: 3rem; border-radius: 15px; cursor: pointer; text-align: center; color: white; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-                            <h3 style="font-size: 1.3rem;">Videos Ya Vistos</h3>
+                        <div onclick="app.mostrarTikTokPlayer('vistos')" style="background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); border-radius: 10px; cursor: pointer; text-align: center; color: white; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1/1;" onmouseover="this.style.transform='scale(0.95)'" onmouseout="this.style.transform='scale(1)'">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">&#9989;</div>
+                            <h3 style="font-size: 1.3rem; padding: 0 1rem;">Videos Ya Vistos</h3>
                         </div>
-                        <div onclick="app.mostrarUsuarios()" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 3rem; border-radius: 15px; cursor: pointer; text-align: center; color: white; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            <div style="font-size: 3rem; margin-bottom: 1rem;">👥</div>
-                            <h3 style="font-size: 1.3rem;">Usuarios Recomendables</h3>
+                        <div onclick="app.mostrarUsuarios()" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 10px; cursor: pointer; text-align: center; color: white; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1/1;" onmouseover="this.style.transform='scale(0.95)'" onmouseout="this.style.transform='scale(1)'">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">&#128101;</div>
+                            <h3 style="font-size: 1.3rem; padding: 0 1rem;">Usuarios Recomendables</h3>
                         </div>
-                        <div onclick="app.mostrarPublicar()" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); padding: 3rem; border-radius: 15px; cursor: pointer; text-align: center; color: white; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                            <div style="font-size: 3rem; margin-bottom: 1rem;">📤</div>
-                            <h3 style="font-size: 1.3rem;">Publicar</h3>
+                        <div onclick="app.mostrarPublicar()" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 10px; cursor: pointer; text-align: center; color: white; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1/1;" onmouseover="this.style.transform='scale(0.95)'" onmouseout="this.style.transform='scale(1)'">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">&#128228;</div>
+                            <h3 style="font-size: 1.3rem; padding: 0 1rem;">Publicar</h3>
                         </div>
                     </div>
                 `;
@@ -270,7 +273,7 @@
                                 </div>
                                 
                                 <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; text-align: center; font-size: 0.9rem; background: rgba(0,0,0,0.7); padding: 0.5rem 1rem; border-radius: 20px; z-index: 100;">
-                                    👆 Desliza arriba/abajo para cambiar
+                                    &#128070; Desliza arriba/abajo para cambiar
                                 </div>
                             </div>
                         </div>
@@ -372,7 +375,7 @@
                                     <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between;">
                                         <div>
                                             <h3 style="color: #333; margin-bottom: 0.5rem;">@${username}</h3>
-                                            <a href="${url}" target="_blank" style="color: #667eea; font-size: 0.9rem;">Ver perfil →</a>
+                                            <a href="${url}" target="_blank" style="color: #667eea; font-size: 0.9rem;">Ver perfil &rarr;</a>
                                         </div>
                                         <button onclick="window.open('${url}', '_blank')" style="padding: 0.8rem 1.5rem; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Seguir</button>
                                     </div>
@@ -393,16 +396,16 @@
                 setTimeout(() => {
                     div.innerHTML = `
                         <div style="text-align: center; padding: 3rem;">
-                            <div style="font-size: 5rem; margin-bottom: 2rem;">🎬</div>
+                            <div style="font-size: 5rem; margin-bottom: 2rem;">&#127916;</div>
                             <h1 style="color: #667eea; margin-bottom: 1rem;">Publicar en TikTok</h1>
                             <p style="color: #666; font-size: 1.2rem; margin-bottom: 2rem;">
-                                Se ha abierto TikTok en una nueva pestaña para que puedas publicar tu video.
+                                Se ha abierto TikTok en una nueva pesta&ntilde;a para que puedas publicar tu video.
                             </p>
                             <button onclick="window.open('https://www.tiktok.com/upload', '_blank')" style="padding: 1rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1.1rem; margin-right: 1rem;">
-                                📤 Abrir TikTok
+                                &#128228; Abrir TikTok
                             </button>
                             <button onclick="app.mostrarMenuTikTok()" style="padding: 1rem 2rem; background: #48bb78; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1.1rem;">
-                                ← Volver al Menú
+                                &larr; Volver al Men&uacute;
                             </button>
                         </div>
                     `;
