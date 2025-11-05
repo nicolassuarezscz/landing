@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta tags dinámicos para el color del navegador -->
+    <meta id="theme-color" name="theme-color" content="#fdc300">
+    <meta id="ms-color" name="msapplication-navbutton-color" content="#fdc300">
+    <meta id="apple-color" name="apple-mobile-web-app-status-bar-style" content="#fdc300">
+    
+    <title>¡Modo Discoteca! 🌈</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fdc300;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar {
+            background-color: #fdc300;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar h1 {
+            color: #333;
+            font-size: 28px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .controls {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.9);
+            margin: 10px;
+            border-radius: 10px;
+        }
+        
+        button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+            background: #555;
+        }
+        
+        .content {
+            background-color: white;
+            margin: 20px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .color-display {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            background: #f8f8f8;
+            border: 3px dashed #ccc;
+        }
+        
+        .footer {
+            background-color: #fdc300;
+            padding: 20px;
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .disco-ball {
+            font-size: 40px;
+            text-align: center;
+            margin: 20px 0;
+            animation: spin 2s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .speed-control {
+            margin: 15px 0;
+        }
+        
+        .speed-control label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .speed-control input {
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        /* Efectos especiales */
+        .rainbow-text {
+            background: linear-gradient(45deg, #ff0000, #ff9900, #ffff00, #33cc33, #3399ff, #cc33ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 400% 400%;
+            animation: rainbow 3s ease infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="rainbow-text">🎵 MODO DISCOTECA ACTIVADO 🎵</h1>
+    </nav>
+    
+    <div class="controls">
+        <button onclick="startDisco()">🎶 Iniciar Discoteca</button>
+        <button onclick="stopDisco()">⏹️ Parar Discoteca</button>
+        <button onclick="resetColors()">🔁 Resetear Colores</button>
+        
+        <div class="speed-control">
+            <label for="speed">Velocidad de cambio:</label>
+            <input type="range" id="speed" min="50" max="1000" value="300" onchange="updateSpeed()">
+            <span id="speed-value">300ms</span>
+        </div>
+    </div>
+    
+    <div class="disco-ball">💿</div>
+    
+    <main class="content">
+        <div class="color-display" id="current-color">
+            Color actual: #fdc300
+        </div>
+        
+        <h2>¡Bienvenido a la Discoteca Digital! 🎉</h2>
+        <p>Los colores del navegador y la página están cambiando automáticamente.</p>
+        <p>Puedes controlar la velocidad con el deslizador y detener el efecto cuando quieras.</p>
+        
+        <h3>Características:</h3>
+        <ul class="feature-list">
+            <li>🌈 Cambio automático de colores</li>
+            <li>🎛️ Control de velocidad</li>
+            <li>📱 Funciona en navegadores móviles</li>
+            <li>🎨 Colores vibrantes y aleatorios</li>
+            <li>💫 Efectos visuales dinámicos</li>
+        </ul>
+    </main>
+    
+    <footer class="footer">
+        <p>¡La fiesta nunca para! 🎊</p>
+    </footer>
+
+    <script>
+        let discoInterval;
+        let currentSpeed = 300;
+        
+        // Función para generar colores hexadecimales aleatorios
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        
+        // Función para actualizar todos los colores
+        function updateColors() {
+            const newColor = getRandomColor();
+            
+            // Actualizar meta tags dinámicamente
+            document.getElementById('theme-color').content = newColor;
+            document.getElementById('ms-color').content = newColor;
+            document.getElementById('apple-color').content = newColor;
+            
+            // Actualizar elementos de la página
+            document.body.style.backgroundColor = newColor;
+            document.querySelector('.navbar').style.backgroundColor = newColor;
+            document.querySelector('.footer').style.backgroundColor = newColor;
+            
+            // Actualizar display del color actual
+            document.getElementById('current-color').textContent = `Color actual: ${newColor}`;
+            document.getElementById('current-color').style.backgroundColor = newColor;
+            document.getElementById('current-color').style.color = getContrastColor(newColor);
+            
+            // Efecto extra: cambiar color del texto del navbar ocasionalmente
+            if (Math.random() > 0.7) {
+                document.querySelector('.navbar h1').style.color = getRandomColor();
+            }
+        }
+        
+        // Función para determinar color de texto contrastante
+        function getContrastColor(hexcolor) {
+            const r = parseInt(hexcolor.substr(1, 2), 16);
+            const g = parseInt(hexcolor.substr(3, 2), 16);
+            const b = parseInt(hexcolor.substr(5, 2), 16);
+            const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+            return brightness > 128 ? '#000000' : '#FFFFFF';
+        }
+        
+        // Controladores de la discoteca
+        function startDisco() {
+            if (discoInterval) {
+                clearInterval(discoInterval);
+            }
+            discoInterval = setInterval(updateColors, currentSpeed);
+            document.querySelector('.disco-ball').style.animation = 'spin 0.5s linear infinite';
+        }
+        
+        function stopDisco() {
+            if (discoInterval) {
+                clearInterval(discoInterval);
+                discoInterval = null;
+            }
+            document.querySelector('.disco-ball').style.animation = 'spin 2s linear infinite';
+        }
+        
+        function resetColors() {
+            stopDisco();
+            const originalColor = '#fdc300';
+            
+            document.getElementById('theme-color').content = originalColor;
+            document.getElementById('ms-color').content = originalColor;
+            document.getElementById('apple-color').content = originalColor;
+            
+            document.body.style.backgroundColor = originalColor;
+            document.querySelector('.navbar').style.backgroundColor = originalColor;
+            document.querySelector('.footer').style.backgroundColor = originalColor;
+            document.querySelector('.navbar h1').style.color = '#333';
+            
+            document.getElementById('current-color').textContent = `Color actual: ${originalColor}`;
+            document.getElementById('current-color').style.backgroundColor = originalColor;
+            document.getElementById('current-color').style.color = '#333';
+        }
+        
+        function updateSpeed() {
+            currentSpeed = 1050 - document.getElementById('speed').value;
+            document.getElementById('speed-value').textContent = currentSpeed + 'ms';
+            
+            if (discoInterval) {
+                stopDisco();
+                startDisco();
+            }
+        }
+        
+        // Efecto inicial
+        setTimeout(() => {
+            document.querySelector('.navbar h1').classList.add('rainbow-text');
+        }, 1000);
+    </script>
+</body>
+</html>
